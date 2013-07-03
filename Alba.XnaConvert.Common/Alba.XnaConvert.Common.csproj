@@ -48,9 +48,15 @@
     <Compile Include="Loader\IContentService.cs" />
     <Compile Include="Loader\IAsset.cs" />
     <Compile Include="Composition\IContentServiceMetadata.cs" />
+    <Compile Include="Loader\SelfServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Alba.Framework\Alba.Framework\Alba.Framework.csproj">
+      <Project>{62730B23-450C-4B93-8D5C-F7037DB6D263}</Project>
+      <Name>Alba.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(SolutionDir)\Build\Common.targets" Condition="Exists('$(SolutionDir)\Build\Common.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿using Alba.Framework.IO;
 using Alba.XnaConvert.Common;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -15,7 +15,7 @@ namespace Alba.XnaConvert.Loader.Xna4
 
         public void SaveToFile (string filename)
         {
-            using (var file = File.OpenWrite(filename))
+            using (var file = Streams.CreateFile(filename))
                 _asset.SaveAsPng(file, _asset.Width, _asset.Height);
         }
     }

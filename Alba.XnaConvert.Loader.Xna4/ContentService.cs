@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using Alba.Framework.IO;
 using Alba.XnaConvert.Common;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,10 +22,10 @@ namespace Alba.XnaConvert.Loader.Xna4
 
         protected override Stream OpenStream (string assetName)
         {
-            return new FileStream(assetName, FileMode.Open, FileAccess.Read, FileShare.Read);
+            return Streams.ReadFile(assetName);
         }
 
-        private class GraphicsService : IServiceProvider, IGraphicsDeviceService
+        private class GraphicsService : SelfServiceProvider, IGraphicsDeviceService
         {
             private readonly Form _form;
 
@@ -35,22 +36,12 @@ namespace Alba.XnaConvert.Loader.Xna4
             public event EventHandler<EventArgs> DeviceResetting;
             public event EventHandler<EventArgs> DeviceCreated;
 
-            public object GetService (Type serviceType)
-            {
-                if (serviceType.IsAssignableFrom(GetType()))
-                    return this;
-                throw new InvalidOperationException(string.Format("Service '{0}' not implemented.", serviceType));
-            }
-
             public GraphicsService ()
             {
                 _form = new Form();
                 GraphicsDevice = new GraphicsDevice(
                     GraphicsAdapter.DefaultAdapter, GraphicsProfile.HiDef,
-                    new PresentationParameters {
-                        IsFullScreen = false,
-                        DeviceWindowHandle = _form.Handle,
-                    });
+                    new PresentationParameters { IsFullScreen = false, DeviceWindowHandle = _form.Handle });
             }
         }
     }

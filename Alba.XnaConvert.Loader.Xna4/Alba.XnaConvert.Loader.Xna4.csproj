@@ -48,6 +48,10 @@
     <Compile Include="Texture2DAsset.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Alba.Framework\Alba.Framework\Alba.Framework.csproj">
+      <Project>{62730B23-450C-4B93-8D5C-F7037DB6D263}</Project>
+      <Name>Alba.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Alba.XnaConvert.Common\Alba.XnaConvert.Common.csproj">
       <Project>{E750F58A-C972-4D72-B97D-52773AAF45EB}</Project>
       <Name>Alba.XnaConvert.Common</Name>

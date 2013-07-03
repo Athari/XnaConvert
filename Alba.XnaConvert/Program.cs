@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
+using Alba.Framework.Text;
 using Alba.XnaConvert.Common;
 
 namespace Alba.XnaConvert
@@ -54,12 +55,9 @@ namespace Alba.XnaConvert
         private IContentService GetContentService (string name, string version)
         {
             var service = ContentServices.FirstOrDefault(cs =>
-                cs.Metadata.GetMetadata().Any(meta =>
-                    string.Equals(meta.Name, name, StringComparison.OrdinalIgnoreCase) &&
-                        string.Equals(meta.Version, version, StringComparison.OrdinalIgnoreCase)
-                    ));
+                cs.Metadata.GetMetadata().Any(meta => meta.Name.EqualsCaseOrd(name) && meta.Version.EqualsCaseOrd(version)));
             if (service == null)
-                throw new ApplicationException(string.Format("Loader for '{0}' with version '{1}' not found.", name, version));
+                throw new ApplicationException("Loader for '{0}' with version '{1}' not found.".Fmt(name, version));
             return service.Value;
         }
     }
