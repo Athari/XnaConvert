@@ -13,7 +13,7 @@ namespace Alba.XnaConvert
     internal class Program
     {
         [ImportMany]
-        public IEnumerable<Lazy<IContentService, IContentServiceMultiMetadata>> ContentServices { get; set; }
+        public IEnumerable<Lazy<IContentService, ContentServiceMetadata>> ContentServices { get; set; }
 
         private static void Main (string[] args)
         {
@@ -58,11 +58,9 @@ namespace Alba.XnaConvert
 
         private void RunListLibsVerb (ListLibsSubOptions options)
         {
-            foreach (var metadata in ContentServices
-                .SelectMany(cs => cs.Metadata.GetMetadata())
+            foreach (var metadata in ContentServices.SelectMany(cs => cs.Metadata.Items)
                 .Where(m => options.IsAll || m.IsPublic)
-                .Select(m => new { m.Name, m.Version })
-                .Distinct())
+                .OrderBy(m => m.Name).ThenBy(m => m.Version))
                 Console.WriteLine("* Library: {0} Version: {1}", metadata.Name, metadata.Version);
         }
 
@@ -74,7 +72,7 @@ namespace Alba.XnaConvert
         private IContentService GetContentService (string name, string version)
         {
             var service = ContentServices.FirstOrDefault(cs =>
-                cs.Metadata.GetMetadata().Any(meta => meta.Name.EqualsCaseOrd(name) && meta.Version.EqualsCaseOrd(version)));
+                cs.Metadata.Items.Any(meta => meta.Name.EqualsCaseOrd(name) && meta.Version.EqualsCaseOrd(version)));
             if (service == null)
                 throw new UserException("Loader for '{0}' with version '{1}' not found.".Fmt(name, version));
             return service.Value;

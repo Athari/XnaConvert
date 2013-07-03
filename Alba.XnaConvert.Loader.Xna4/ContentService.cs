@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Composition;
 using System.IO;
 using System.Windows.Forms;
 using Alba.Framework.IO;
@@ -8,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Alba.XnaConvert.Loader.Xna4
 {
+    [Export(typeof(IContentService))]
     [ExportContentService ("XNA", "4.0")]
     [ExportContentService ("XNA", "4", false)]
     public class ContentService : ContentManager, IContentService

@@ -42,9 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Composition\ContentServiceMultiMetadataExts.cs" />
-    <Compile Include="Composition\ExportContentService.cs" />
-    <Compile Include="Composition\IContentServiceMultiMetadata.cs" />
+    <Compile Include="Composition\ExportContentServiceAttribute.cs" />
+    <Compile Include="Composition\ContentServiceMetadata.cs" />
     <Compile Include="Loader\IContentService.cs" />
     <Compile Include="Loader\IAsset.cs" />
     <Compile Include="Composition\IContentServiceMetadata.cs" />
