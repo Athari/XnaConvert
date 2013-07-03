@@ -8,11 +8,13 @@ namespace Alba.XnaConvert.Common
     {
         public string Name { get; set; }
         public string Version { get; set; }
+        public bool IsPublic { get; set; }
 
-        public ExportContentService (string name, string version) : base(typeof(IContentService))
+        public ExportContentService (string name, string version, bool isPublic = true) : base(typeof(IContentService))
         {
             Version = version;
             Name = name;
+            IsPublic = isPublic;
         }
     }
 }

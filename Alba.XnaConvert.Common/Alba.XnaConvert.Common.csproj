@@ -50,6 +50,7 @@
     <Compile Include="Composition\IContentServiceMetadata.cs" />
     <Compile Include="Loader\SelfServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserException.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alba.Framework\Alba.Framework\Alba.Framework.csproj">

@@ -4,5 +4,6 @@
     {
         string Name { get; }
         string Version { get; }
+        bool IsPublic { get; }
     }
 }

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using System.Diagnostics;
 using System.Linq;
 using Alba.Framework.Text;
+using Alba.XnaConvert.CommandLine;
 using Alba.XnaConvert.Common;
 
 namespace Alba.XnaConvert
@@ -16,35 +18,48 @@ namespace Alba.XnaConvert
         private static void Main (string[] args)
         {
             try {
-                new Program().RunInternal(args);
+                new Program().MainInternal(args);
                 Console.WriteLine("Done!");
+                Exit(0);
             }
-            catch (ApplicationException e) {
+            catch (UserException e) {
                 Console.WriteLine("Error!");
                 Console.WriteLine(e.Message);
+                Exit(1);
             }
             catch (Exception e) {
                 Console.WriteLine("Unexpected error!");
                 Console.WriteLine(e);
+                Exit(1);
             }
-            Console.WriteLine("Press any key...");
-            Console.ReadKey();
         }
 
-        private void RunInternal (string[] args)
+        private void MainInternal (string[] args)
         {
+            Options options = Options.ParseCommandLine(args);
+            if (options == null)
+                Environment.Exit(1);
+
             ComposeContentServices();
+            if (options.ConvertVerb != null)
+                RunConvertVerb(options.ConvertVerb);
+            else if (options.ListLibsVerb != null)
+                RunListLibsVerb(options.ListLibsVerb);
+        }
 
-            string inputFile = args[0];
-            string outputFile = args[1];
-            string loaderName = args[2];
-            string loaderVersion = args[3];
-
-            var loader = GetContentService(loaderName, loaderVersion);
+        private void RunConvertVerb (ConvertSubOptions options)
+        {
+            var loader = GetContentService(options.LoaderName, options.LoaderVersion);
             using (loader) {
-                loader.LoadTexture2D(inputFile).SaveToFile(outputFile);
+                loader.LoadTexture2D(options.InputFile).SaveToFile(options.OutputFile);
                 loader.Unload();
             }
+        }
+
+        private void RunListLibsVerb (ListLibsSubOptions options)
+        {
+            foreach (IContentServiceMetadata metadata in ContentServices.SelectMany(cs => cs.Metadata.GetMetadata()).Where(m => options.IsAll || m.IsPublic))
+                Console.WriteLine("* Library: {0} Version: {1}", metadata.Name, metadata.Version);
         }
 
         private void ComposeContentServices ()
@@ -57,8 +72,17 @@ namespace Alba.XnaConvert
             var service = ContentServices.FirstOrDefault(cs =>
                 cs.Metadata.GetMetadata().Any(meta => meta.Name.EqualsCaseOrd(name) && meta.Version.EqualsCaseOrd(version)));
             if (service == null)
-                throw new ApplicationException("Loader for '{0}' with version '{1}' not found.".Fmt(name, version));
+                throw new UserException("Loader for '{0}' with version '{1}' not found.".Fmt(name, version));
             return service.Value;
+        }
+
+        private static void Exit (int exitCode)
+        {
+            if (Debugger.IsAttached) {
+                Console.WriteLine("Press any key...");
+                Console.ReadKey();
+            }
+            Environment.Exit(exitCode);
         }
     }
 }

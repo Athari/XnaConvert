@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Alba.XnaConvert.Loader.Xna4
 {
     [ExportContentService ("XNA", "4.0")]
-    [ExportContentService ("XNA", "4")]
+    [ExportContentService ("XNA", "4", false)]
     public class ContentService : ContentManager, IContentService
     {
         public ContentService () : base(new GraphicsService())

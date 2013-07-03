@@ -4,5 +4,6 @@ namespace Alba.XnaConvert.Common
     {
         string[] Name { get; }
         string[] Version { get; }
+        bool[] IsPublic { get; }
     }
 }
