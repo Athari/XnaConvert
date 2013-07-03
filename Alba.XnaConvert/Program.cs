@@ -58,7 +58,11 @@ namespace Alba.XnaConvert
 
         private void RunListLibsVerb (ListLibsSubOptions options)
         {
-            foreach (IContentServiceMetadata metadata in ContentServices.SelectMany(cs => cs.Metadata.GetMetadata()).Where(m => options.IsAll || m.IsPublic))
+            foreach (var metadata in ContentServices
+                .SelectMany(cs => cs.Metadata.GetMetadata())
+                .Where(m => options.IsAll || m.IsPublic)
+                .Select(m => new { m.Name, m.Version })
+                .Distinct())
                 Console.WriteLine("* Library: {0} Version: {1}", metadata.Name, metadata.Version);
         }
 
