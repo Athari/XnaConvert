@@ -10,10 +10,19 @@ namespace Alba.XnaConvert.CommandLine
         [Option ('v', "version", Required = true, DefaultValue = "4.0", HelpText = "Library version.")]
         public string LoaderVersion { get; set; }
 
-        [Option ('i', "input", Required = true, HelpText = "Input file (*.xnb).")]
+        [Option ('i', "input", MutuallyExclusiveSet = "input", HelpText = "Input file (*.xnb).")]
         public string InputFile { get; set; }
 
-        [Option ('o', "output", Required = true, HelpText = "Output file (*.png for Texture2D).")]
-        public string OutputFile { get; set; }
+        [Option ('d', "inputdir", MutuallyExclusiveSet = "input", HelpText = "Input directory (with *.xnb files).")]
+        public string InputDir { get; set; }
+
+        [Option ('m', "mask", DefaultValue = "*.xnb", HelpText = "Input mask (with *.xnb files).")]
+        public string InputMask { get; set; }
+
+        [Option ('r', "recursive", DefaultValue = false, HelpText = "Process files in input directory recursively.")]
+        public bool IsRecursive { get; set; }
+
+        [Option ('o', "output", Required = true, HelpText = "Output file or directory.")]
+        public string OutputFileDir { get; set; }
     }
 }
