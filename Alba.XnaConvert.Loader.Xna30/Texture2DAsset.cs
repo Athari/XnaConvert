@@ -1,8 +1,7 @@
-﻿using Alba.Framework.IO;
-using Alba.XnaConvert.Common;
+﻿using Alba.XnaConvert.Common;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Alba.XnaConvert.Loader.Xna4
+namespace Alba.XnaConvert.Loader.Xna30
 {
     public class Texture2DAsset : IAsset
     {
@@ -15,8 +14,7 @@ namespace Alba.XnaConvert.Loader.Xna4
 
         public void SaveToFile (string filename)
         {
-            using (var file = Streams.CreateFile(filename))
-                _asset.SaveAsPng(file, _asset.Width, _asset.Height);
+            _asset.Save(filename, ImageFileFormat.Png);
         }
     }
 }

@@ -7,15 +7,14 @@ using Alba.XnaConvert.Common;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Alba.XnaConvert.Loader.Xna3
+namespace Alba.XnaConvert.Loader.Xna40
 {
-    [Export (typeof(IContentService))]
-    [ExportContentService ("XNA", "3.0")]
-    [ExportContentService ("XNA", "3", false)]
+    [Export(typeof(IContentService))]
+    [ExportContentService ("XNA", "4.0")]
+    [ExportContentService ("XNA", "4", false)]
     public class ContentService : ContentManager, IContentService
     {
-        public ContentService ()
-            : base(new GraphicsService())
+        public ContentService () : base(new GraphicsService())
         {}
 
         public IAsset LoadTexture2D (string filename)
@@ -34,17 +33,17 @@ namespace Alba.XnaConvert.Loader.Xna3
 
             public GraphicsDevice GraphicsDevice { get; private set; }
 
-            public event EventHandler DeviceDisposing;
-            public event EventHandler DeviceReset;
-            public event EventHandler DeviceResetting;
-            public event EventHandler DeviceCreated;
+            public event EventHandler<EventArgs> DeviceDisposing;
+            public event EventHandler<EventArgs> DeviceReset;
+            public event EventHandler<EventArgs> DeviceResetting;
+            public event EventHandler<EventArgs> DeviceCreated;
 
             public GraphicsService ()
             {
                 _form = new Form();
                 GraphicsDevice = new GraphicsDevice(
-                    GraphicsAdapter.DefaultAdapter, DeviceType.Hardware, _form.Handle,
-                    new PresentationParameters { IsFullScreen = false });
+                    GraphicsAdapter.DefaultAdapter, GraphicsProfile.HiDef,
+                    new PresentationParameters { IsFullScreen = false, DeviceWindowHandle = _form.Handle });
             }
         }
     }

@@ -7,8 +7,8 @@
     <ProjectGuid>{02212512-C390-4513-826D-4CB5075DE862}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Alba.XnaConvert.Loader.Xna4</RootNamespace>
-    <AssemblyName>Alba.XnaConvert.Loader.Xna4</AssemblyName>
+    <RootNamespace>Alba.XnaConvert.Loader.Xna40</RootNamespace>
+    <AssemblyName>Alba.XnaConvert.Loader.Xna40</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

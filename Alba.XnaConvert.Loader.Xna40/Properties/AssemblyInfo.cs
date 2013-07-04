@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Alba.XnaConvert.Loader.Xna4")]
+[assembly: AssemblyTitle("Alba.XnaConvert.Loader.Xna40")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Alba.XnaConvert.Loader.Xna4")]
+[assembly: AssemblyProduct("Alba.XnaConvert.Loader.Xna40")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

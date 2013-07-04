@@ -1,12 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alba.XnaConvert", "Alba.XnaConvert\Alba.XnaConvert.csproj", "{8FE2FE58-6179-41A3-8332-A1A6141FFC47}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alba.XnaConvert.Common", "Alba.XnaConvert.Common\Alba.XnaConvert.Common.csproj", "{E750F58A-C972-4D72-B97D-52773AAF45EB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alba.XnaConvert.Loader.Xna4", "Alba.XnaConvert.Loader.Xna4\Alba.XnaConvert.Loader.Xna4.csproj", "{02212512-C390-4513-826D-4CB5075DE862}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{ECC4ECFC-8D0D-4B7D-BD57-96E292413434}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -16,7 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{ECC4EC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alba.Framework", "Alba.Framework\Alba.Framework\Alba.Framework.csproj", "{62730B23-450C-4B93-8D5C-F7037DB6D263}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alba.XnaConvert.Loader.Xna3", "Alba.XnaConvert.Loader.Xna3\Alba.XnaConvert.Loader.Xna3.csproj", "{A6664986-9A24-4D03-A4FF-00D6DAE1E7FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alba.XnaConvert", "Alba.XnaConvert\Alba.XnaConvert.csproj", "{8FE2FE58-6179-41A3-8332-A1A6141FFC47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alba.XnaConvert.Common", "Alba.XnaConvert.Common\Alba.XnaConvert.Common.csproj", "{E750F58A-C972-4D72-B97D-52773AAF45EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alba.XnaConvert.Loader.Xna30", "Alba.XnaConvert.Loader.Xna30\Alba.XnaConvert.Loader.Xna30.csproj", "{A6664986-9A24-4D03-A4FF-00D6DAE1E7FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alba.XnaConvert.Loader.Xna40", "Alba.XnaConvert.Loader.Xna40\Alba.XnaConvert.Loader.Xna40.csproj", "{02212512-C390-4513-826D-4CB5075DE862}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
