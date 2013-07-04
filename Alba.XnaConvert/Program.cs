@@ -39,8 +39,10 @@ namespace Alba.XnaConvert
         private void MainInternal (string[] args)
         {
             Options options = Options.ParseCommandLine(args);
-            if (options == null)
-                Environment.Exit(1);
+            if (options == null) {
+                Exit(1);
+                return;
+            }
 
             ComposeContentServices();
             if (options.ConvertVerb != null)
