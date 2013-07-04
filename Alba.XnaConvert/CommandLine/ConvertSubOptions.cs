@@ -4,10 +4,10 @@ namespace Alba.XnaConvert.CommandLine
 {
     internal class ConvertSubOptions
     {
-        [Option ('l', "library", Required = true, DefaultValue = "XNA", HelpText = "Library name.")]
+        [Option ('l', "library", DefaultValue = "XNA", HelpText = "Library name.")]
         public string LoaderName { get; set; }
 
-        [Option ('v', "version", Required = true, DefaultValue = "4.0", HelpText = "Library version.")]
+        [Option ('v', "version", DefaultValue = "4.0", HelpText = "Library version.")]
         public string LoaderVersion { get; set; }
 
         [Option ('i', "input", MutuallyExclusiveSet = "input", HelpText = "Input file (*.xnb).")]
