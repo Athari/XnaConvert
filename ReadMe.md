@@ -8,6 +8,7 @@ Features
 
 * Converting Texture2D XNB files to PNG images.
 * All versions of XNA are supported: 1.0, 2.0, 3.0, 3.1, 4.0.
+* Command line.
 
 N.B.
 ----
@@ -16,6 +17,8 @@ Do not forget: the fact that you *can technically extract* and view the resource
 
 Installation
 ------------
+
+[**Download XnaConvert**](https://github.com/Athari/XnaConvert/releases) binary files from the Releases tab.
 
 You need to install the following redistributable packages before using the program (also necessary for compiling from sources):
 
@@ -47,6 +50,9 @@ Examples:
 
     Alba.XnaConvert convert -v 4 -d "C:\Games\Terraria\Content\Images" -o "C:\Unpacked\Terraria"
     Alba.XnaConvert convert -v 4 -r -d "C:\Games\Dust An Elysian Tail\content\gfx" -o "C:\Unpacked\Dust An Elysian Tail"
+    Alba.XnaConvert convert -v 4 -r -d "C:\Games\They Bleed Pixels\Content" -o "C:\Unpacked\They Bleed Pixels"
+    Alba.XnaConvert convert -v 4 -r -d "C:\Games\Adventures of Shuggy\gfx" -o "C:\Unpacked\Adventures of Shuggy"
+    Alba.XnaConvert convert -v 4 -r -d "C:\Games\DLC Quest\Content" -o "C:\Unpacked\DLC Quest"
     Alba.XnaConvert convert -v 3.1 -r -d "C:\Games\Capsized\Content" -o "C:\Unpacked\Capsized"
     Alba.XnaConvert convert -v 3 -d "C:\Games\Blueberry Garden\Content" -o "C:\Unpacked\Blueberry Garden"
 
@@ -66,20 +72,29 @@ Examples:
 Known issues
 ------------
 
-1. XNA sometimes fails to properly free resources. If multiple huge images are converted and your computer is low on memory, the program will terminate. *Workaround:* run the program again. It will skip already converted files.
+1. XNA sometimes fails to properly free resources. If multiple huge images are converted (in directory input mode) and your computer is low on memory, the program will terminate. *Workaround:* run the program again. It will skip already converted files.
+
+2. Support for XNA 1.0 and 2.0 is not tested as no games seem to use these versions.
 
 License
 -------
 
-**New BSD**
+**New BSD License**
 
 Copyright © 2013, Athari
+
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
 * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-* Neither the name of the Athari nor the names of other contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+* Neither the name of Athari nor the names of other contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL ATHARI BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Links
+-----
+
+* [**Download XnaConvert**](https://github.com/Athari/XnaConvert/releases)
+* [Discussion on XeNTaX](http://forum.xentax.com/viewtopic.php?f=33&t=10584) (or lack thereof)
