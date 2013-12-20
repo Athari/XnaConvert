@@ -5,6 +5,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Alba.Framework.Sys;
 using Alba.Framework.Text;
 using Alba.XnaConvert.CommandLine;
@@ -29,8 +30,19 @@ namespace Alba.XnaConvert
                 Console.WriteLine(e.Message);
                 Exit(1);
             }
+            catch (ReflectionTypeLoadException e) {
+                Console.WriteLine("Failed to load one of plugins.");
+                Console.WriteLine(e.GetFullMessage());
+                Console.WriteLine("Detailed exception information:");
+                Console.WriteLine(e);
+                foreach (Exception ei in e.LoaderExceptions)
+                    Console.WriteLine(ei);
+                Exit(1);
+            }
             catch (Exception e) {
                 Console.WriteLine("Unexpected error!");
+                Console.WriteLine(e.GetFullMessage());
+                Console.WriteLine("Detailed exception information:");
                 Console.WriteLine(e);
                 Exit(1);
             }

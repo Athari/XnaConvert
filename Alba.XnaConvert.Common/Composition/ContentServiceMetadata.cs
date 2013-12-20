@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Alba.Framework.Collections;
-using Alba.Framework.Linq;
+using Alba.Framework.Reflection;
 
 namespace Alba.XnaConvert.Common
 {

@@ -1,5 +1,5 @@
 ﻿using System;
-using Alba.Framework.Sys;
+using Alba.Framework.Reflection;
 using Alba.Framework.Text;
 
 namespace Alba.XnaConvert.Common
@@ -8,7 +8,7 @@ namespace Alba.XnaConvert.Common
     {
         public object GetService (Type serviceType)
         {
-            if (GetType().IsAssignableTo(serviceType))
+            if (GetType().Is(serviceType))
                 return this;
             throw new InvalidOperationException("Service '{0}' not implemented.".Fmt(serviceType));
         }
