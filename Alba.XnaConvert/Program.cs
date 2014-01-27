@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Alba.Framework.Security;
 using Alba.Framework.Sys;
 using Alba.Framework.Text;
 using Alba.XnaConvert.CommandLine;
@@ -50,6 +51,15 @@ namespace Alba.XnaConvert
 
         private void MainInternal (string[] args)
         {
+            try {
+                UrlZone zone = UrlZones.GetUrlZone(Assembly.GetExecutingAssembly().Location);
+                if (zone != UrlZone.LocalMachine)
+                    Console.WriteLine("Warning: running from untrusted location ({0}). Loading plugins may fail.".Fmt(zone));
+            }
+            catch {
+                Console.WriteLine("Warning: zone check failed.");
+            }
+
             Options options = Options.ParseCommandLine(args);
             if (options == null) {
                 Exit(1);
